@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Block1
+  - Ball
+  - Block5
+  - Block3
+  - PowerUp1
+  - PowerUp2
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 4255940727
+    locked: 0
+  - name: Middleground
+    uniqueID: 2381305347
+    locked: 0
+  - name: Foreground
+    uniqueID: 3736511883
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
