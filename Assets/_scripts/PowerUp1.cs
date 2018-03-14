@@ -13,7 +13,7 @@ public class PowerUp1 : MonoBehaviour {
 			// Define a reference to access the other script. 
 			BallMovement ballMovement = Ball.GetComponent<BallMovement> ();
 			// Increase the speed of the ball 
-			ballMovement.speedBall = ballMovement.speedBall + 5;
+			ballMovement.speedBall = ballMovement.speedBall + 4;
 			// Make power up disappear
 			gameObject.SetActive(false);
 		}
