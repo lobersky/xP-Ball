@@ -30,6 +30,7 @@ public class Block : MonoBehaviour
 	public GameObject prefabPowerUp1;
 	public GameObject prefabPowerUp2;
 	public GameObject prefabPowerUp3;
+	public GameObject prefabPowerUp4; 
 
 	// Use this for initialization
 	void Start ()
@@ -84,6 +85,14 @@ public class Block : MonoBehaviour
 			SetScoreText ();
 		}
 
+		if (gameObject.tag == "PowerUp4"){
+			// Generate power up
+			Instantiate(prefabPowerUp4, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
+			// Destroy block
+			gameObject.SetActive(false);
+			score++;
+			SetScoreText ();
+		}
 
 		// For regular blocks, check type and damage required.
 
