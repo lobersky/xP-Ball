@@ -10,6 +10,10 @@ TagManager:
   - Block3
   - PowerUp1
   - PowerUp2
+  - Block2
+  - PowerUp3
+  - PowerUp4
+  - PowerUp5
   layers:
   - Default
   - TransparentFX
