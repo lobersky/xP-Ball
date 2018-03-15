@@ -15,8 +15,7 @@ public class Block : MonoBehaviour
 	public Text levelText;
 
 	// Private variable - block counters
-	private static int numberBlocksL1;
-	private static int numberBlocksL2;
+	private static int numberBlocks;
 
 	// Private variable - damage counter
 	private int hitBlock;
@@ -52,8 +51,9 @@ public class Block : MonoBehaviour
 		levelText.text = "";
 
 		// Check how many blocks there are
-		numberBlocksL1=6;
-//		numberBlocksL1 = GameObject.FindGameObjectsWithTag("Block1").Length + ... ;
+		numberBlocks = GameObject.FindGameObjectsWithTag("Block1").Length + GameObject.FindGameObjectsWithTag("Block2").Length 
+			+ GameObject.FindGameObjectsWithTag("Block3").Length + GameObject.FindGameObjectsWithTag("Block4").Length
+			+ GameObject.FindGameObjectsWithTag("Block5").Length;
 	}
 
 	void OnCollisionEnter2D (Collision2D hit)
@@ -136,7 +136,7 @@ public class Block : MonoBehaviour
 		}
 
 		// Check if all blocks have been hit, load next level
-		if (score >= numberBlocksL1){
+		if (score >= numberBlocks){
 			SceneManager.LoadScene ("Level2");
 		}
 	}
@@ -146,7 +146,7 @@ public class Block : MonoBehaviour
 		scoreText.text = "Score:" + score.ToString ();
 		PlayerPrefs.SetInt ("Score", score);
 		PlayerPrefs.Save ();
-		if (score >= numberBlocksL1) {
+		if (score >= numberBlocks) {
 			levelText.text = "Level Complete!";
 		}
 	}

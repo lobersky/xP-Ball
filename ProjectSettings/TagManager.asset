@@ -14,6 +14,7 @@ TagManager:
   - PowerUp3
   - PowerUp4
   - PowerUp5
+  - Block4
   layers:
   - Default
   - TransparentFX
