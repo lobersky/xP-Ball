@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PowerUp5 : MonoBehaviour {
-
-	// On collision with the player activate power-up. 
+public class PowerUp5 : MonoBehaviour
+{
+	// On collision with the player activate power-up.
 	void OnCollisionEnter2D (Collision2D collect)
 	{	
-		if (collect.gameObject.name == "Player"){
+		if (collect.gameObject.name == "Player") {
 			// Make power up disappear
-			gameObject.SetActive(false);
+			gameObject.SetActive (false);
 
 			// Need to link the change with the object
-			GameObject Ball = GameObject.Find("Ball");
+			GameObject Ball = GameObject.Find ("Ball");
 
 			// Define a reference to access the other script. 
 			BallMovement ballMovement2 = Ball.GetComponent<BallMovement> ();
