@@ -31,6 +31,7 @@ public class Block : MonoBehaviour
 	public GameObject prefabPowerUp2;
 	public GameObject prefabPowerUp3;
 	public GameObject prefabPowerUp4; 
+	public GameObject prefabPowerUp5; 
 
 	// Use this for initialization
 	void Start ()
@@ -88,6 +89,15 @@ public class Block : MonoBehaviour
 		if (gameObject.tag == "PowerUp4"){
 			// Generate power up
 			Instantiate(prefabPowerUp4, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
+			// Destroy block
+			gameObject.SetActive(false);
+			score++;
+			SetScoreText ();
+		}
+
+		if (gameObject.tag == "PowerUp5"){
+			// Generate power up
+			Instantiate(prefabPowerUp5, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
 			// Destroy block
 			gameObject.SetActive(false);
 			score++;

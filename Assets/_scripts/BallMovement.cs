@@ -69,7 +69,7 @@ public class BallMovement : MonoBehaviour
 		}
 	}
 	// Function for lives
-	void SetLivesText ()
+	public void SetLivesText ()
 	{
 		livesText.text = "Lives:" + lives.ToString ();
 		if (lives == 0) {

@@ -127,11 +127,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4631462622810260, guid: c7010d64cc33d314f8432783ecba646a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 4631462622810260, guid: c7010d64cc33d314f8432783ecba646a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4631462622810260, guid: c7010d64cc33d314f8432783ecba646a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -200,6 +200,8 @@ MonoBehaviour:
   prefabPowerUp3: {fileID: 1445415473648462, guid: 56d628d50ef7c464abf7e14588f0b214,
     type: 2}
   prefabPowerUp4: {fileID: 1769378145483494, guid: d7bc14115143d5b4687eef68fe0a57e1,
+    type: 2}
+  prefabPowerUp5: {fileID: 1310275126898974, guid: f65dcd88a3d160b43a28506efe773b23,
     type: 2}
 --- !u!1 &75776522
 GameObject:
@@ -810,7 +812,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4631462622810260, guid: c7010d64cc33d314f8432783ecba646a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4631462622810260, guid: c7010d64cc33d314f8432783ecba646a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -883,6 +885,8 @@ MonoBehaviour:
   prefabPowerUp3: {fileID: 1445415473648462, guid: 56d628d50ef7c464abf7e14588f0b214,
     type: 2}
   prefabPowerUp4: {fileID: 1769378145483494, guid: d7bc14115143d5b4687eef68fe0a57e1,
+    type: 2}
+  prefabPowerUp5: {fileID: 1310275126898974, guid: f65dcd88a3d160b43a28506efe773b23,
     type: 2}
 --- !u!1001 &791092895
 Prefab:
@@ -1828,6 +1832,8 @@ MonoBehaviour:
     type: 2}
   prefabPowerUp4: {fileID: 1769378145483494, guid: d7bc14115143d5b4687eef68fe0a57e1,
     type: 2}
+  prefabPowerUp5: {fileID: 1310275126898974, guid: f65dcd88a3d160b43a28506efe773b23,
+    type: 2}
 --- !u!1 &1631600871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,6 +1945,8 @@ MonoBehaviour:
   prefabPowerUp3: {fileID: 1445415473648462, guid: 56d628d50ef7c464abf7e14588f0b214,
     type: 2}
   prefabPowerUp4: {fileID: 1769378145483494, guid: d7bc14115143d5b4687eef68fe0a57e1,
+    type: 2}
+  prefabPowerUp5: {fileID: 1310275126898974, guid: f65dcd88a3d160b43a28506efe773b23,
     type: 2}
 --- !u!1 &1851862799
 GameObject:
@@ -2109,6 +2117,7 @@ MonoBehaviour:
   prefabPowerUp2: {fileID: 0}
   prefabPowerUp3: {fileID: 0}
   prefabPowerUp4: {fileID: 0}
+  prefabPowerUp5: {fileID: 0}
 --- !u!61 &1905961998
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2339,6 +2348,7 @@ MonoBehaviour:
   prefabPowerUp2: {fileID: 0}
   prefabPowerUp3: {fileID: 0}
   prefabPowerUp4: {fileID: 0}
+  prefabPowerUp5: {fileID: 0}
 --- !u!61 &2059970760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2446,4 +2456,6 @@ MonoBehaviour:
   prefabPowerUp3: {fileID: 1445415473648462, guid: 56d628d50ef7c464abf7e14588f0b214,
     type: 2}
   prefabPowerUp4: {fileID: 1769378145483494, guid: d7bc14115143d5b4687eef68fe0a57e1,
+    type: 2}
+  prefabPowerUp5: {fileID: 1310275126898974, guid: f65dcd88a3d160b43a28506efe773b23,
     type: 2}
