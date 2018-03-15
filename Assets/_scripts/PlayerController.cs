@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Convert input into movement of Player
-
 public class PlayerController : MonoBehaviour
 {
 	// Private variable - speed

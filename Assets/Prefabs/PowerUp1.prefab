@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 50114071263925204}
   - component: {fileID: 61381876110489636}
   - component: {fileID: 114602447670258640}
+  - component: {fileID: 114217921899906406}
+  - component: {fileID: 82793932506124544}
   m_Layer: 0
   m_Name: PowerUp1
   m_TagString: Untagged
@@ -88,6 +90,97 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.63, y: 0.51}
   m_EdgeRadius: 0
+--- !u!82 &82793932506124544
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718861014004802}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 29112cf2a26dbd44ab9c4c41b49e3918, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114217921899906406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718861014004802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c35d39a86fdf3a40ac1aa7a7d006081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114602447670258640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,6 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25253266ef9f0d7449fc0b8eaf072025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpClip: {fileID: 8300000, guid: 29112cf2a26dbd44ab9c4c41b49e3918, type: 3}
+  powerUpSource: {fileID: 82098426205673204, guid: 02d0c1d530723634eaeadd4b8fea3e1d,
+    type: 2}
 --- !u!212 &212707370764114104
 SpriteRenderer:
   m_ObjectHideFlags: 1
