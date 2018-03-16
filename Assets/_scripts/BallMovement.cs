@@ -20,6 +20,10 @@ public class BallMovement : MonoBehaviour
 		GetComponent<Rigidbody2D> ().velocity = Vector2.up * speedBall;
 	}
 
+	void Update() {
+		GetComponent<Rigidbody2D> ().AddForce (Vector2.down * 0.1f);
+	}
+
 	float hitFactor (Vector2 ballPos, Vector2 objPos,
 	                 float objHeight)
 	{

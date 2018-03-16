@@ -24,10 +24,30 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		score = 0;
-		level = 1; 
-		loadLevel = 0; // index 0 is level 1
-		levelScore=0;
+
+		// Initialise and check if information stored in keys for level changes
+		// (1) Score 
+		if (score != null) {
+			score = PlayerPrefs.GetInt ("score");
+		} else {
+			score = 0;
+		}
+
+		// (2) Level
+		if (loadLevel != null) {
+			loadLevel = PlayerPrefs.GetInt ("loadlevel");
+		} else {
+			loadLevel = 0; // index 0 is level 1
+		}
+
+		if (level > 1) {
+			level = PlayerPrefs.GetInt ("level");
+		} else {
+			level = 1; // start game at level 1
+		}
+
+		UpdateLevelText ();
+		levelScore=0; // reset for each level to zero as a counter. 
 
 //		// For level reload after death, do a logic check for initialisation
 //		lives = PlayerPrefs.GetInt ("lives", 0);
@@ -44,7 +64,10 @@ public class GameController : MonoBehaviour {
 		UpdateLevelText (); 
 
 		// Check how many blocks there are on the level
-		numberBlocks = GameObject.FindGameObjectsWithTag ("Block1").Length + GameObject.FindGameObjectsWithTag ("Block2").Length + GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
+		numberBlocks = GameObject.FindGameObjectsWithTag ("Block1").Length + GameObject.FindGameObjectsWithTag ("PowerUp1").Length
+			+ GameObject.FindGameObjectsWithTag ("PowerUp2").Length + GameObject.FindGameObjectsWithTag ("PowerUp3").Length 
+			+ GameObject.FindGameObjectsWithTag ("PowerUp4").Length + GameObject.FindGameObjectsWithTag ("PowerUp5").Length 
+			+ GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
 	}
 
 	// Increase Score Method to Call in Other Scripts
@@ -81,6 +104,10 @@ public class GameController : MonoBehaviour {
 		loadLevel++;
 		// Reset counter
 		levelScore = 0;
+		PlayerPrefs.SetInt ("level", level);
+		PlayerPrefs.SetInt ("loadlevel", loadLevel);
+		PlayerPrefs.SetInt ("score", score);
+		PlayerPrefs.Save ();
 		SceneManager.LoadScene (loadLevel);
 		}
 	}
