@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp1Clip: {fileID: 8300000, guid: 29112cf2a26dbd44ab9c4c41b49e3918, type: 3}
-  audioSource: {fileID: 82346660177799934, guid: 6efa87b00f9a5af469b98ac2db4e870b,
+  audio1Source: {fileID: 82346660177799934, guid: 6efa87b00f9a5af469b98ac2db4e870b,
     type: 2}
 --- !u!212 &212707370764114104
 SpriteRenderer:

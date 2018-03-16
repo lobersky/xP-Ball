@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d744f06a7195449b342a4af1fece58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUp3Clip: {fileID: 8300000, guid: 29112cf2a26dbd44ab9c4c41b49e3918, type: 3}
+  audio3Source: {fileID: 82346660177799934, guid: 6efa87b00f9a5af469b98ac2db4e870b,
+    type: 2}
 --- !u!212 &212210015513864090
 SpriteRenderer:
   m_ObjectHideFlags: 1

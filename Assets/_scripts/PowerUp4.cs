@@ -9,7 +9,7 @@ public class PowerUp4 : MonoBehaviour {
 	public AudioClip powerUp4Clip;
 
 	// Define component that unity uses to play the clip
-	public AudioSource audioSource;
+	public AudioSource audio4Source;
 
 	// Destroy object delay
 	private float sec = 0.0000005f;
@@ -23,9 +23,9 @@ public class PowerUp4 : MonoBehaviour {
 			StartCoroutine ("wait");
 
 			// Play sound when power up is collected
-			audioSource = GetComponent<AudioSource> ();
-			audioSource.clip = powerUp4Clip;
-			audioSource.PlayOneShot (audioSource.clip);
+			audio4Source = GetComponent<AudioSource> ();
+			audio4Source.clip = powerUp4Clip;
+			audio4Source.PlayOneShot (audio4Source.clip);
 
 			// Need to link the change with the object
 			GameObject Player = GameObject.Find("Player");

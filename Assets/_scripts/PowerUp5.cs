@@ -10,7 +10,7 @@ public class PowerUp5 : MonoBehaviour
 	public AudioClip powerUp5Clip;
 
 	// Define component that unity uses to play the clip
-	public AudioSource audioSource;
+	public AudioSource audio5Source;
 
 	// Destroy object delay
 	private float sec = 0.0000005f;
@@ -24,9 +24,9 @@ public class PowerUp5 : MonoBehaviour
 			StartCoroutine ("wait");
 
 			// Play sound when power up is collected
-			audioSource = GetComponent<AudioSource> ();
-			audioSource.clip = powerUp5Clip;
-			audioSource.PlayOneShot (audioSource.clip);
+			audio5Source = GetComponent<AudioSource> ();
+			audio5Source.clip = powerUp5Clip;
+			audio5Source.PlayOneShot (audio5Source.clip);
 
 			// Make power up disappear
 			gameObject.SetActive (false);
