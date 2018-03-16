@@ -6,10 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class PowerUp5 : MonoBehaviour
 {
+	// Define audio clips to play
+	public AudioClip powerUp5Clip;
+
+	// Define component that unity uses to play the clip
+	public AudioSource audioSource;
+
+	// Destroy object delay
+	private float sec = 0.0000005f;
+
 	// On collision with the player activate power-up.
 	void OnCollisionEnter2D (Collision2D collect)
 	{	
 		if (collect.gameObject.name == "Player") {
+
+			// Delay power up collection
+			StartCoroutine ("wait");
+
+			// Play sound when power up is collected
+			audioSource = GetComponent<AudioSource> ();
+			audioSource.clip = powerUp5Clip;
+			audioSource.PlayOneShot (audioSource.clip);
+
 			// Make power up disappear
 			gameObject.SetActive (false);
 
@@ -24,5 +42,11 @@ public class PowerUp5 : MonoBehaviour
 
 			ballMovement2.livesText.text = "Lives:" + ballMovement2.lives.ToString ();
 		}
+	}
+	IEnumerator wait ()
+	{
+		yield return new WaitForSeconds (sec);
+		// Make power up disappear
+		gameObject.SetActive (false);
 	}
 }
