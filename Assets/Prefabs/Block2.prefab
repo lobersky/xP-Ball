@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4631462622810260}
   - component: {fileID: 212046172047461624}
   - component: {fileID: 61053443099284598}
+  - component: {fileID: 114386956206899444}
   m_Layer: 0
   m_Name: Block2
-  m_TagString: Block2
+  m_TagString: PowerUp3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1940231498379940}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 4.5, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,6 +67,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.05}
   m_EdgeRadius: 0
+--- !u!114 &114386956206899444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1940231498379940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0528f21d28f66fe4fbb8fb5168b05d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 1
+  Block1: {fileID: 21300000, guid: a1962e4b27291c14297481faa6303647, type: 3}
+  Block3: {fileID: 21300000, guid: 87beab266aaec0e49a786209b13bc819, type: 3}
+  prefabPowerUp1: {fileID: 1718861014004802, guid: 739fb92a80ef85144a237b157e6a3dee,
+    type: 2}
+  prefabPowerUp2: {fileID: 1399547658395562, guid: 3d1cfeb2bd4cf1d479728b27f1d0b31b,
+    type: 2}
+  prefabPowerUp3: {fileID: 1445415473648462, guid: 56d628d50ef7c464abf7e14588f0b214,
+    type: 2}
+  prefabPowerUp4: {fileID: 1769378145483494, guid: d7bc14115143d5b4687eef68fe0a57e1,
+    type: 2}
+  prefabPowerUp5: {fileID: 1310275126898974, guid: f65dcd88a3d160b43a28506efe773b23,
+    type: 2}
 --- !u!212 &212046172047461624
 SpriteRenderer:
   m_ObjectHideFlags: 1

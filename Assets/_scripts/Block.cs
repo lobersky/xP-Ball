@@ -6,30 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class Block : MonoBehaviour
 {
+	// Define variables to interact with game controller class for scoring
+	public int scoreValue;
+	private GameController gameController;
 
-	// Public variables - score system
-	public Text scoreText;
-	public static int score = 0;
-	private static int levelScore=0; 
-
-	// Public variables - level system
-	public static int level = 0;
-
-	// Public variable - level complete
-	public Text levelText;
-
-	// Private variable - block counters
-	private static int numberBlocks;
-
-	// Private variable - damage counter
+	// Multi-hit blocks: hit damage counter and sprites to access
 	private int hitBlock;
-
-	// Sprite Manager variables
 	private SpriteRenderer spriteRenderer;
 	public Sprite Block1;
 	public Sprite Block3;
 
-	// Power-up prefab variables
+	// Power-ups: define prefabs to instatiate on collision
 	public GameObject prefabPowerUp1;
 	public GameObject prefabPowerUp2;
 	public GameObject prefabPowerUp3;
@@ -39,26 +26,17 @@ public class Block : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		// Intialise score for current level
-		levelScore=0;
-
-		// For level reload after death, do a logic check for initialisation of overall score
-		score = PlayerPrefs.GetInt ("score", score);
-		if (score == 0) {
-			score = 0;
+		// Need to reference a specific instance of the Game Controller Class to do scoring
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null) {
+			gameController = gameControllerObject.GetComponent<GameController> ();
 		}
-
+		if (gameController == null) {
+			Debug.Log ("Cannot find 'GameController' script, is object reference attached correctly?");
+		}
+			
 		// Initilise hit counter for blocks
 		hitBlock = 0; 
-
-		// Display score bar
-		SetScoreText ();
-
-		// Initialise end of level text
-		levelText.text = "";
-
-		// Check how many blocks there are
-		numberBlocks = GameObject.FindGameObjectsWithTag ("Block1").Length + GameObject.FindGameObjectsWithTag ("Block2").Length + GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
 	}
 
 	void OnCollisionEnter2D (Collision2D hit)
@@ -69,9 +47,7 @@ public class Block : MonoBehaviour
 			Instantiate (prefabPowerUp1, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
 			// Destroy block
 			gameObject.SetActive (false);
-			score++;
-			levelScore++;
-			SetScoreText ();
+			gameController.AddScore(scoreValue);
 		}
 
 		if (gameObject.tag == "PowerUp2") {
@@ -79,9 +55,7 @@ public class Block : MonoBehaviour
 			Instantiate (prefabPowerUp2, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
 			// Destroy block
 			gameObject.SetActive (false);
-			score++;
-			levelScore++;
-			SetScoreText ();
+			gameController.AddScore(scoreValue);
 		}
 
 		if (gameObject.tag == "PowerUp3") {
@@ -89,9 +63,7 @@ public class Block : MonoBehaviour
 			Instantiate (prefabPowerUp3, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
 			// Destroy block
 			gameObject.SetActive (false);
-			score++;
-			levelScore++;
-			SetScoreText ();
+			gameController.AddScore(scoreValue);
 		}
 
 		if (gameObject.tag == "PowerUp4") {
@@ -99,9 +71,7 @@ public class Block : MonoBehaviour
 			Instantiate (prefabPowerUp4, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
 			// Destroy block
 			gameObject.SetActive (false);
-			score++;
-			levelScore++;
-			SetScoreText ();
+			gameController.AddScore(scoreValue);
 		}
 
 		if (gameObject.tag == "PowerUp5") {
@@ -109,9 +79,7 @@ public class Block : MonoBehaviour
 			Instantiate (prefabPowerUp5, new Vector2 (hit.transform.position.x, hit.transform.position.y), Quaternion.identity);
 			// Destroy block
 			gameObject.SetActive (false);
-			score++;
-			levelScore++;
-			SetScoreText ();
+			gameController.AddScore(scoreValue);
 		}
 
 		// For regular blocks, check type and damage required.
@@ -119,9 +87,7 @@ public class Block : MonoBehaviour
 		if (gameObject.tag == "Block1") {
 			// One hit destroy object, deactivate block on collision with ball 
 			gameObject.SetActive (false);
-			score++; 
-			levelScore++;
-			SetScoreText ();
+			gameController.AddScore(scoreValue);
 		}
 
 		if (gameObject.tag == "Block3") {
@@ -144,24 +110,6 @@ public class Block : MonoBehaviour
 				spriteRenderer.sprite = Block3;
 				gameObject.tag = "Block3";
 			}
-		}
-
-		// Check if all blocks have been hit, load next level
-		if (levelScore >= numberBlocks) {
-			level++;
-			// Reset counter
-			levelScore = 0;
-			SceneManager.LoadScene (level);
-		}
-	}
-	// Function for the score bar
-	void SetScoreText ()
-	{
-		scoreText.text = "Score:" + score.ToString ();
-		PlayerPrefs.SetInt ("Score", score);
-		PlayerPrefs.Save ();
-		if (levelScore >= numberBlocks) {
-			levelText.text = "Level Complete!";
 		}
 	}
 }

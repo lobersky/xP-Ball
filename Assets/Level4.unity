@@ -344,6 +344,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.05}
   m_EdgeRadius: 0
+--- !u!1001 &117773870
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &205292487
 Prefab:
   m_ObjectHideFlags: 0
@@ -1889,9 +1931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1d34daa463246459321bc217bd25ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  livesText: {fileID: 1036311214}
-  lives: 3
-  gameoverText: {fileID: 1246200699}
+  livesLost: 0
   speedBall: 6
 --- !u!1 &1446621189
 GameObject:

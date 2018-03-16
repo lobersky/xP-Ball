@@ -184,8 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0528f21d28f66fe4fbb8fb5168b05d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1478292272}
-  levelText: {fileID: 479196896}
+  scoreValue: 0
   Block1: {fileID: 21300000, guid: a1962e4b27291c14297481faa6303647, type: 3}
   Block3: {fileID: 21300000, guid: 87beab266aaec0e49a786209b13bc819, type: 3}
   prefabPowerUp1: {fileID: 1718861014004802, guid: 739fb92a80ef85144a237b157e6a3dee,
@@ -1985,8 +1984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0528f21d28f66fe4fbb8fb5168b05d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1478292272}
-  levelText: {fileID: 479196896}
+  scoreValue: 0
   Block1: {fileID: 21300000, guid: a1962e4b27291c14297481faa6303647, type: 3}
   Block3: {fileID: 21300000, guid: 87beab266aaec0e49a786209b13bc819, type: 3}
   prefabPowerUp1: {fileID: 1718861014004802, guid: 739fb92a80ef85144a237b157e6a3dee,
@@ -1999,6 +1997,48 @@ MonoBehaviour:
     type: 2}
   prefabPowerUp5: {fileID: 1310275126898974, guid: f65dcd88a3d160b43a28506efe773b23,
     type: 2}
+--- !u!1001 &716039499
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718124591795310, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b224ca8c0de29ad48ad7b0bdf805d30f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &812328626
 Prefab:
   m_ObjectHideFlags: 0
@@ -2757,9 +2797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1d34daa463246459321bc217bd25ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  livesText: {fileID: 1036311214}
-  lives: 3
-  gameoverText: {fileID: 1246200699}
+  livesLost: 0
   speedBall: 6
 --- !u!1 &1446621189
 GameObject:
@@ -3830,8 +3868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0528f21d28f66fe4fbb8fb5168b05d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1478292272}
-  levelText: {fileID: 479196896}
+  scoreValue: 0
   Block1: {fileID: 21300000, guid: a1962e4b27291c14297481faa6303647, type: 3}
   Block3: {fileID: 21300000, guid: 87beab266aaec0e49a786209b13bc819, type: 3}
   prefabPowerUp1: {fileID: 1718861014004802, guid: 739fb92a80ef85144a237b157e6a3dee,

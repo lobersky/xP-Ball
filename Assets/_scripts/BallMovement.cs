@@ -6,12 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class BallMovement : MonoBehaviour
 {
-	// Public variables - lives system
-	public Text livesText;
-	public int lives = 3;
-
-	// Public variable - game over
-	public Text gameoverText;
+	// Define variables to interact with game controller class for scoring
+	public int livesLost;
+	private GameController gameController;
 
 	// Public variable - speed of the ball
 	public float speedBall;
@@ -19,16 +16,6 @@ public class BallMovement : MonoBehaviour
 	// Start will be run on the first frame of the game.
 	void Start ()
 	{
-		// For level reload after death, do a logic check for initialisation
-		lives = PlayerPrefs.GetInt ("lives", 0);
-		if (lives == 0) {
-			lives = 3;
-		}
-
-		// Display lives information
-		SetLivesText (); 
-		gameoverText.text = "";
-
 		// Set initial velocity of the ball
 		GetComponent<Rigidbody2D> ().velocity = Vector2.up * speedBall;
 	}
@@ -53,28 +40,8 @@ public class BallMovement : MonoBehaviour
 			GetComponent<Rigidbody2D> ().velocity = dir * speedBall;
 		}
 
-		if (col.gameObject.name == "WallBottom") {
-			lives = lives - 1;
-			SetLivesText ();
-			if (lives > 0) {
-				PlayerPrefs.SetInt ("lives", lives);
-				PlayerPrefs.Save ();
-				// Respawn level
-				SceneManager.LoadScene ("Level1");
-			}
-			if (lives == 0) {
-				PlayerPrefs.DeleteKey ("lives");
-				PlayerPrefs.Save ();
-			}
-		}
-	}
-	// Function for lives
-	public void SetLivesText ()
-	{
-		livesText.text = "Lives:" + lives.ToString ();
-		if (lives == 0) {
-			livesText.text = "Game Over";
-			Destroy (GameObject.FindWithTag ("Ball"));
-		}
+//		if (col.gameObject.name == "WallBottom") {
+//			gameController.LivesLost (livesLost);
+//			}
 	}
 }
