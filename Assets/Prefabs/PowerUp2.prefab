@@ -99,7 +99,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 15d463fe11edf974d81267e1a2fd0f35, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp2Clip: {fileID: 8300000, guid: 15d463fe11edf974d81267e1a2fd0f35, type: 3}
-  audio2Source: {fileID: 82307618573183138, guid: dd2e261d204d0f14282297e15b07b2e2,
+  audio2Source: {fileID: 82160045075880142, guid: dd2e261d204d0f14282297e15b07b2e2,
     type: 2}
 --- !u!212 &212684837262886646
 SpriteRenderer:

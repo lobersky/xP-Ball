@@ -106,7 +106,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp5Clip: {fileID: 8300000, guid: 15d463fe11edf974d81267e1a2fd0f35, type: 3}
-  audio5Source: {fileID: 82307618573183138, guid: dd2e261d204d0f14282297e15b07b2e2,
+  audio5Source: {fileID: 82160045075880142, guid: dd2e261d204d0f14282297e15b07b2e2,
     type: 2}
 --- !u!212 &212716422371240702
 SpriteRenderer:
