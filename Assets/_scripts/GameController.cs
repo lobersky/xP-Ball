@@ -24,17 +24,16 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		// Initialise and check if information stored in keys for level changes
 		// (1) Score 
-		if (score != null) {
+		if (score != null & score > 0) {
 			score = PlayerPrefs.GetInt ("score");
 		} else {
 			score = 0;
 		}
 
 		// (2) Level
-		if (loadLevel != null) {
+		if (loadLevel != null & loadLevel > 0) {
 			loadLevel = PlayerPrefs.GetInt ("loadlevel");
 		} else {
 			loadLevel = 0; // index 0 is level 1
@@ -49,14 +48,14 @@ public class GameController : MonoBehaviour {
 		UpdateLevelText ();
 		levelScore=0; // reset for each level to zero as a counter. 
 
-//		// For level reload after death, do a logic check for initialisation
-//		lives = PlayerPrefs.GetInt ("lives", 0);
-//		if (lives == 0) {
-//			lives = 3;
-//		}
+		// For level reload after death, do a logic check for initialisation
+		lives = PlayerPrefs.GetInt ("lives", 0);
+		if (lives == 0) {
+			lives = 3;
+		}
 
-//		// Display lives information
-//		SetLives (); 
+		// Display lives information
+		livesText.text = "Lives:" + lives.ToString (); 
 		gameoverText.text = "";
 
 		// Define a function to update the score displayed
@@ -79,12 +78,12 @@ public class GameController : MonoBehaviour {
 		LevelChange ();
 	}
 
-//	// Lives Method to Call in Other Scripts
-//	public void LivesLost (int newLivesValue){
-//		lives -= newLivesValue;
-//		SetLives ();
-//
-//	}
+	// Lives Method to Call in Other Scripts
+	public void LivesLost (int newLivesValue){
+		lives -= newLivesValue;
+		SetLives ();
+
+	}
 
 
 	// Update Score Display Function
@@ -112,22 +111,29 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-//	// Lives Function:
-//	public void SetLives()
+	// Lives Function:
+	public void SetLives()
+	{
+		if (lives > 0) {
+			PlayerPrefs.SetInt ("lives", lives);
+			PlayerPrefs.Save ();
+			// Respawn level
+			SceneManager.LoadScene (loadLevel);
+		}
+		if (lives == 0) {
+			PlayerPrefs.DeleteKey ("lives");
+			PlayerPrefs.Save ();
+			livesText.text = "Game Over";
+			Destroy (GameObject.FindWithTag ("Ball"));
+		}
+	}
+
+//	void OnGUI()
 //	{
-//		livesText.text = "Lives:" + lives.ToString ();
-//
-//		if (lives > 0) {
-//			PlayerPrefs.SetInt ("lives", lives);
-//			PlayerPrefs.Save ();
-//			// Respawn level
-//			SceneManager.LoadScene (loadLevel);
-//		}
-//		if (lives == 0) {
-//			PlayerPrefs.DeleteKey ("lives");
-//			PlayerPrefs.Save ();
-//			livesText.text = "Game Over";
-//			Destroy (GameObject.FindWithTag ("Ball"));
+//		//Delete all of the PlayerPrefs settings by pressing this Button
+//		if (GUI.Button(new Rect(100, 200, 200, 60), "Delete"))
+//		{
+//			PlayerPrefs.DeleteAll();
 //		}
 //	}
 }
