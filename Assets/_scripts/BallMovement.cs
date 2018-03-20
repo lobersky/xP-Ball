@@ -16,6 +16,15 @@ public class BallMovement : MonoBehaviour
 	// Start will be run on the first frame of the game.
 	void Start ()
 	{
+		// Need to reference a specific instance of the Game Controller Class to manage lives
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null) {
+			gameController = gameControllerObject.GetComponent<GameController> ();
+		}
+		if (gameController == null) {
+			Debug.Log ("Cannot find 'GameController' script, is object reference attached correctly?");
+		}
+
 		// Set initial velocity of the ball
 		GetComponent<Rigidbody2D> ().velocity = Vector2.up * speedBall;
 	}
@@ -44,8 +53,8 @@ public class BallMovement : MonoBehaviour
 			GetComponent<Rigidbody2D> ().velocity = dir * speedBall;
 		}
 
-//		if (col.gameObject.name == "WallBottom") {
-//			gameController.LivesLost (livesLost);
-//			}
+		if (col.gameObject.name == "WallBottom") {
+			gameController.LivesLost (livesLost);
+			}
 	}
 }

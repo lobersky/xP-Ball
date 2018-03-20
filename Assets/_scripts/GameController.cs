@@ -26,17 +26,17 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		// Initialise and check if information stored in keys for level changes
 		// (1) Score 
-		if (score != null & score > 0) {
+		if (score > 0) {
 			score = PlayerPrefs.GetInt ("score");
 		} else {
 			score = 0;
 		}
 
 		// (2) Level
-		if (loadLevel != null & loadLevel > 0) {
+		if (loadLevel > 1) {
 			loadLevel = PlayerPrefs.GetInt ("loadlevel");
 		} else {
-			loadLevel = 0; // index 0 is level 1
+			loadLevel = 1; // build index 1 is level 1
 		}
 
 		if (level > 1) {
@@ -82,7 +82,6 @@ public class GameController : MonoBehaviour {
 	public void LivesLost (int newLivesValue){
 		lives -= newLivesValue;
 		SetLives ();
-
 	}
 
 
@@ -121,19 +120,10 @@ public class GameController : MonoBehaviour {
 			SceneManager.LoadScene (loadLevel);
 		}
 		if (lives == 0) {
-			PlayerPrefs.DeleteKey ("lives");
+			PlayerPrefs.DeleteAll();
 			PlayerPrefs.Save ();
 			livesText.text = "Game Over";
 			Destroy (GameObject.FindWithTag ("Ball"));
 		}
 	}
-
-//	void OnGUI()
-//	{
-//		//Delete all of the PlayerPrefs settings by pressing this Button
-//		if (GUI.Button(new Rect(100, 200, 200, 60), "Delete"))
-//		{
-//			PlayerPrefs.DeleteAll();
-//		}
-//	}
 }
