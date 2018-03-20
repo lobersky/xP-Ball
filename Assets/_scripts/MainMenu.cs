@@ -8,9 +8,11 @@ public class MainMenu : MonoBehaviour {
 
 	public void PlayGame(){
 		// Load game
-//		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		Debug.Log ("Play button pressed");
-		SceneManager.LoadScene ("Level1");
+		PlayerPrefs.DeleteAll ();
+		PlayerPrefs.Save ();
+		Debug.Log ("Player preferences reset");
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 	}
 
 	public void QuitGame(){
