@@ -49,6 +49,35 @@ public class GameController : MonoBehaviour
 		lives = PlayerPrefs.GetInt ("lives", 3);
 		livesText.text = "Lives:" + lives.ToString (); 
 
+//		 Option 2 - Find each block by name - seems super tedious! 
+		List<GameObject> blocksList = new List<GameObject>();
+		// want a list of all game objects that are blocks
+		foreach (GameObject blockOne in GameObject.FindGameObjectsWithTag("Block1")) {
+		blocksList.Add (blockOne);
+		}
+		foreach (GameObject blockThree in GameObject.FindGameObjectsWithTag("Block3")) {
+			blocksList.Add (blockThree);
+		}
+		foreach (GameObject blockFive in GameObject.FindGameObjectsWithTag("Block5")) {
+			blocksList.Add (blockFive);
+		}
+		foreach (GameObject powerUp1 in GameObject.FindGameObjectsWithTag("PowerUp1")) {
+			blocksList.Add (powerUp1);
+		}
+		foreach (GameObject powerUp2 in GameObject.FindGameObjectsWithTag("PowerUp2")) {
+			blocksList.Add (powerUp2);
+		}
+		foreach (GameObject powerUp3 in GameObject.FindGameObjectsWithTag("PowerUp3")) {
+			blocksList.Add (powerUp3);
+		}
+		foreach (GameObject powerUp4 in GameObject.FindGameObjectsWithTag("PowerUp4")) {
+			blocksList.Add (powerUp4);
+		}
+		foreach (GameObject powerUp5 in GameObject.FindGameObjectsWithTag("PowerUp5")) {
+			blocksList.Add (powerUp5);
+		}
+		print (blocksList [3]);
+
 		// BLOCK DATABASE REFERENCE AND MANAGEMENT 
 		// Options 1 - Define a function to do this: https://answers.unity.com/questions/179310/how-to-find-all-objects-in-specific-layer.html
 		// where the layer is 1 - Middle Ground as there are only blocks on this layer. 
