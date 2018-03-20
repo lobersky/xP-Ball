@@ -22,63 +22,47 @@ public class GameController : MonoBehaviour {
 	private int lives;
 	public Text gameoverText;
 
-	// Use this for initialization
 	void Start () {
-		// Initialise and check if information stored in keys for level changes
-		// (1) Score 
-		if (score > 0) {
-			score = PlayerPrefs.GetInt ("score");
-		} else {
-			score = 0;
-		}
+		// Initialise and check if information stored in player preference keys
 
-		// (2) Level
-		if (loadLevel > 1) {
-			loadLevel = PlayerPrefs.GetInt ("loadlevel");
-		} else {
-			loadLevel = 1; // build index 1 is level 1
-		}
+		// (1) Score Management
+		// If score is stored in player preferences, obtain from key score, else set to 0. 
+		score = PlayerPrefs.GetInt ("score", 0);
+		UpdateScore ();
 
-		if (level > 1) {
-			level = PlayerPrefs.GetInt ("level");
-		} else {
-			level = 1; // start game at level 1
-		}
-
+		// (2) Level Management
+		// Same logic as score; set to 1 as game levels are indexed from 1.  
+		loadLevel = PlayerPrefs.GetInt ("loadlevel", 1);
+		// Same logic as score; set to 1 as game levels are indexed from 1.  
+		level = PlayerPrefs.GetInt ("level", 1);
 		UpdateLevelText ();
 		levelScore=0; // reset for each level to zero as a counter. 
-
+		// Check how many blocks there are on the level for end level condition
+		numberBlocks = GameObject.FindGameObjectsWithTag ("Block1").Length + GameObject.FindGameObjectsWithTag ("PowerUp1").Length
+			+ GameObject.FindGameObjectsWithTag ("PowerUp2").Length + GameObject.FindGameObjectsWithTag ("PowerUp3").Length 
+			+ GameObject.FindGameObjectsWithTag ("PowerUp4").Length + GameObject.FindGameObjectsWithTag ("PowerUp5").Length 
+			+ GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
+		
+		// (3) Lives Management
 		// For level reload after death, do a logic check for initialisation
 		lives = PlayerPrefs.GetInt ("lives", 0);
 		if (lives == 0) {
 			lives = 3;
 		}
-
-		// Display lives information
 		livesText.text = "Lives:" + lives.ToString (); 
 		gameoverText.text = "";
-
-		// Define a function to update the score displayed
-		UpdateScore ();
-		UpdateLevelText (); 
-
-		// Check how many blocks there are on the level
-		numberBlocks = GameObject.FindGameObjectsWithTag ("Block1").Length + GameObject.FindGameObjectsWithTag ("PowerUp1").Length
-			+ GameObject.FindGameObjectsWithTag ("PowerUp2").Length + GameObject.FindGameObjectsWithTag ("PowerUp3").Length 
-			+ GameObject.FindGameObjectsWithTag ("PowerUp4").Length + GameObject.FindGameObjectsWithTag ("PowerUp5").Length 
-			+ GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
 	}
 
-	// Increase Score Method to Call in Other Scripts
-	// this should only be called on colllision ... but it is using the value before collision and adding an extra value
-	public void AddScore (int newScoreValue) {
+	// Methods
+	// (1) Increase Score Method to Call in Other Scripts
+		public void AddScore (int newScoreValue) {
 		score += newScoreValue;
 		levelScore += newScoreValue;
 		UpdateScore ();
 		LevelChange ();
 	}
 
-	// Lives Method to Call in Other Scripts
+	// (2) Lives Method to Call in Other Scripts
 	public void LivesLost (int newLivesValue){
 		lives -= newLivesValue;
 		SetLives ();
@@ -109,6 +93,9 @@ public class GameController : MonoBehaviour {
 		SceneManager.LoadScene (loadLevel);
 		}
 	}
+
+//	SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+//	Debug.Log ("Load Level 1");
 
 	// Lives Function:
 	public void SetLives()

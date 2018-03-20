@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour {
 		PlayerPrefs.Save ();
 		Debug.Log ("Player preferences reset");
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		Debug.Log ("Load Level 1");
 	}
 
 	public void QuitGame(){
