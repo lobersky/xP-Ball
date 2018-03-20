@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour {
 	// Public variables - lives system
 	public Text livesText;
 	private int lives;
-	public Text gameoverText;
 
 	void Start () {
 		// Initialise and check if information stored in player preference keys
@@ -47,7 +46,6 @@ public class GameController : MonoBehaviour {
 		// Same logic as score; set to 3 for starting a new game. 
 		lives = PlayerPrefs.GetInt ("lives", 3);
 		livesText.text = "Lives:" + lives.ToString (); 
-		gameoverText.text = "";
 	}
 
 	// Methods
@@ -109,8 +107,7 @@ public class GameController : MonoBehaviour {
 		if (lives == 0) {
 			PlayerPrefs.DeleteAll();
 			PlayerPrefs.Save ();
-			livesText.text = "Game Over";
-			Destroy (GameObject.FindWithTag ("Ball"));
+			SceneManager.LoadScene ("GameOver");
 		}
 	}
 }
