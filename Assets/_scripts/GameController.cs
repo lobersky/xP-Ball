@@ -84,6 +84,7 @@ public class GameController : MonoBehaviour {
 	void LevelChange() {
 	if (levelScore >= numberBlocks) {
 		loadLevel++;
+		level++;
 		// Reset counter
 		levelScore = 0;
 		PlayerPrefs.SetInt ("level", level);
@@ -91,6 +92,8 @@ public class GameController : MonoBehaviour {
 		PlayerPrefs.SetInt ("score", score);
 		PlayerPrefs.Save ();
 		SceneManager.LoadScene (loadLevel);
+		Debug.Log ("Load Level:" + level);
+		UpdateLevelText ();
 		}
 	}
 
