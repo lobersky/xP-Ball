@@ -76,7 +76,10 @@ public class GameController : MonoBehaviour
 		foreach (GameObject powerUp5 in GameObject.FindGameObjectsWithTag("PowerUp5")) {
 			blocksList.Add (powerUp5);
 		}
-		print (blocksList [3]);
+
+		foreach (GameObject block in blocksList) {
+			print (block);
+		}
 
 		// BLOCK DATABASE REFERENCE AND MANAGEMENT 
 		// Options 1 - Define a function to do this: https://answers.unity.com/questions/179310/how-to-find-all-objects-in-specific-layer.html
