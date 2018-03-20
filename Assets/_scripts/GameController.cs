@@ -44,11 +44,8 @@ public class GameController : MonoBehaviour {
 			+ GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
 		
 		// (3) Lives Management
-		// For level reload after death, do a logic check for initialisation
-		lives = PlayerPrefs.GetInt ("lives", 0);
-		if (lives == 0) {
-			lives = 3;
-		}
+		// Same logic as score; set to 3 for starting a new game. 
+		lives = PlayerPrefs.GetInt ("lives", 3);
 		livesText.text = "Lives:" + lives.ToString (); 
 		gameoverText.text = "";
 	}
