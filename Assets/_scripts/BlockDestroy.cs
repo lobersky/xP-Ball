@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Block : MonoBehaviour
+public class BlockDestroy : MonoBehaviour
 {
 	// Define variables to interact with game controller class for scoring
 	public int scoreValue;
@@ -34,7 +34,7 @@ public class Block : MonoBehaviour
 		if (gameController == null) {
 			Debug.Log ("Cannot find 'GameController' script, is object reference attached correctly?");
 		}
-			
+
 		// Initilise hit counter for blocks
 		hitBlock = 0; 
 	}
