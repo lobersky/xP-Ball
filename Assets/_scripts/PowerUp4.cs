@@ -34,6 +34,10 @@ public class PowerUp4 : MonoBehaviour {
 			// Make power up disappear
 			gameObject.SetActive(false);
 		}
+		if (collect.gameObject.name == "WallBottom") {
+			// Make power up disappear
+			gameObject.SetActive (false);
+		}
 	}
 
 	IEnumerator wait ()

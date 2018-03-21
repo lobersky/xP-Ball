@@ -32,11 +32,16 @@ public class PowerUp5 : MonoBehaviour
 			audio5Source.clip = powerUp5Clip;
 			audio5Source.PlayOneShot (audio5Source.clip);
 
+			// Take off life via GameController class method
+			gameController.LivesLost (livesLost);
+
 			// Make power up disappear
 			gameObject.SetActive (false);
 
-//			// Take off life via GameController class method
-//			gameController.LivesLost (livesLost);
+		}
+		if (collect.gameObject.name == "WallBottom") {
+			// Make power up disappear
+			gameObject.SetActive (false);
 		}
 	}
 	IEnumerator wait ()

@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
 	private int loadLevel;
 	private int level;
 	private int levelScore;
-	public 	List<GameObject> blocksList = new List<GameObject> ();  
+	public List<GameObject> blocksList = new List<GameObject> ();  
+	public List<GameObject> deleteList = new List<GameObject> (); 
 
 	// Public variables - lives system
 	public Text livesText;
@@ -26,19 +27,18 @@ public class GameController : MonoBehaviour
 	void Start ()
 	{
 		// Initialise and check if information stored in player preference keys
-
-		// Logic check for blocks loaded
-		if (PlayerPrefs.HasKey ("score")) {
-			foreach (GameObject block in blocksList) {
-				gameObject.SetActive (true);
-				print (block);
-			}
-		}
-
 		// (1) Score Management
 		// If score is stored in player preferences, obtain from key score, else set to 0. 
 		score = PlayerPrefs.GetInt ("score", 0);
 		UpdateScore ();
+
+		// Logic check for blocks loaded
+		if (PlayerPrefs.HasKey ("score")) {
+			Debug.Log ("Block settings loop triggered");
+			foreach (GameObject block in deleteList) {
+				gameObject.SetActive (false);
+			}
+		}
 
 		// (2) Level Management
 		// Same logic as score; set to 1 as game levels are indexed from 1.  
@@ -59,7 +59,10 @@ public class GameController : MonoBehaviour
 		// Same logic as score; set to 3 for starting a new game. 
 		lives = PlayerPrefs.GetInt ("lives", 3);
 		livesText.text = "Lives:" + lives.ToString (); 
+		PlayerPrefs.SetInt ("lives", lives);
+		PlayerPrefs.Save ();
 	}
+
 
 	// External Methods
 	// (1) Block Management Method
@@ -67,9 +70,9 @@ public class GameController : MonoBehaviour
 	{
 		// remove blocks that have been collected
 		if (blocksList.Contains (collectedBlock)) {
-			blocksList.Remove(collectedBlock);
+			deleteList.Add(collectedBlock);
 		}
-		foreach (GameObject block in blocksList) {
+		foreach (GameObject block in deleteList) {
 			print (block);
 		}
 	}
@@ -89,6 +92,8 @@ public class GameController : MonoBehaviour
 	{
 		lives -= newLivesValue;
 		Debug.Log ("Life lost");
+		PlayerPrefs.SetInt ("lives", lives);
+		PlayerPrefs.Save ();
 		SetLives ();
 	}
 
@@ -121,21 +126,24 @@ public class GameController : MonoBehaviour
 		foreach (GameObject powerUp5 in GameObject.FindGameObjectsWithTag("PowerUp5")) {
 			blocksList.Add (powerUp5);
 		}
-		foreach (GameObject block in blocksList) {
-			print (block);
-		}
 	}
 		
 	// Update Score Display
 	void UpdateScore ()
 	{
 		scoreText.text = "Score:" + score; 
+		PlayerPrefs.SetInt ("score", score);
+		PlayerPrefs.Save ();
 	}
 
 	// (2) Update Level Info Display
 	void UpdateLevelText ()
 	{
+		level = SceneManager.GetActiveScene().buildIndex;
 		levelText.text = "Level:" + level;
+		PlayerPrefs.SetInt ("level", level);
+		PlayerPrefs.SetInt ("loadlevel", loadLevel);
+		PlayerPrefs.Save ();
 	}
 
 	// (3) Level Change Method
@@ -149,9 +157,9 @@ public class GameController : MonoBehaviour
 			levelScore = 0;
 			PlayerPrefs.SetInt ("level", level);
 			PlayerPrefs.SetInt ("loadlevel", loadLevel);
-			PlayerPrefs.SetInt ("score", score);
 			PlayerPrefs.Save ();
-			SceneManager.LoadScene (loadLevel);
+			deleteList.Clear ();
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);;
 			Debug.Log ("Load Level:" + level);
 			UpdateLevelText ();
 		}
@@ -161,10 +169,8 @@ public class GameController : MonoBehaviour
 	public void SetLives ()
 	{
 		if (lives > 0) {
-			PlayerPrefs.SetInt ("lives", lives);
-			PlayerPrefs.Save ();
 			// Respawn level
-			SceneManager.LoadScene (loadLevel);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 		if (lives == 0) {
 			PlayerPrefs.DeleteAll ();

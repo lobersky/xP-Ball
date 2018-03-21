@@ -1145,6 +1145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1478292272}
   levelText: {fileID: 479196896}
+  blocksList: []
+  deleteList: []
   livesText: {fileID: 1036311214}
 --- !u!4 &746332278
 Transform:
@@ -1641,8 +1643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1d34daa463246459321bc217bd25ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  livesLost: 0
-  speedBall: 6
+  livesLost: 1
+  speedBall: 12
 --- !u!1 &1446621189
 GameObject:
   m_ObjectHideFlags: 0

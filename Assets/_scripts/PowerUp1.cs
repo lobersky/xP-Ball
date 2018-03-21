@@ -15,7 +15,7 @@ public class PowerUp1 : MonoBehaviour
 
 	void OnCollisionEnter2D (Collision2D collect)
 	{
-		// PowerUp 1: Increase ball speed
+		// Successfull collect of PowerUp 1 apply increase ball speed
 		if (collect.gameObject.name == "Player") {
 
 			// Delay power up collection
@@ -32,6 +32,10 @@ public class PowerUp1 : MonoBehaviour
 			BallMovement ballMovement = Ball.GetComponent<BallMovement> ();
 			// Increase the speed of the ball 
 			ballMovement.speedBall = ballMovement.speedBall + 4;
+		}
+		if (collect.gameObject.name == "WallBottom") {
+			// Make power up disappear
+			gameObject.SetActive (false);
 		}
 	}
 
