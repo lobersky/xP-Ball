@@ -27,6 +27,14 @@ public class GameController : MonoBehaviour
 	{
 		// Initialise and check if information stored in player preference keys
 
+		// Logic check for blocks loaded
+		if (PlayerPrefs.HasKey ("score")) {
+			foreach (GameObject block in blocksList) {
+				gameObject.SetActive (true);
+				print (block);
+			}
+		}
+
 		// (1) Score Management
 		// If score is stored in player preferences, obtain from key score, else set to 0. 
 		score = PlayerPrefs.GetInt ("score", 0);
@@ -44,34 +52,9 @@ public class GameController : MonoBehaviour
 		+ GameObject.FindGameObjectsWithTag ("PowerUp2").Length + GameObject.FindGameObjectsWithTag ("PowerUp3").Length
 		+ GameObject.FindGameObjectsWithTag ("PowerUp4").Length + GameObject.FindGameObjectsWithTag ("PowerUp5").Length
 		+ GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
-		// Add all game objects that are active blocks to blocksList
-		foreach (GameObject blockOne in GameObject.FindGameObjectsWithTag("Block1")) {
-			blocksList.Add (blockOne);
-		}
-		foreach (GameObject blockThree in GameObject.FindGameObjectsWithTag("Block3")) {
-			blocksList.Add (blockThree);
-		}
-		foreach (GameObject blockFive in GameObject.FindGameObjectsWithTag("Block5")) {
-			blocksList.Add (blockFive);
-		}
-		foreach (GameObject powerUp1 in GameObject.FindGameObjectsWithTag("PowerUp1")) {
-			blocksList.Add (powerUp1);
-		}
-		foreach (GameObject powerUp2 in GameObject.FindGameObjectsWithTag("PowerUp2")) {
-			blocksList.Add (powerUp2);
-		}
-		foreach (GameObject powerUp3 in GameObject.FindGameObjectsWithTag("PowerUp3")) {
-			blocksList.Add (powerUp3);
-		}
-		foreach (GameObject powerUp4 in GameObject.FindGameObjectsWithTag("PowerUp4")) {
-			blocksList.Add (powerUp4);
-		}
-		foreach (GameObject powerUp5 in GameObject.FindGameObjectsWithTag("PowerUp5")) {
-			blocksList.Add (powerUp5);
-		}
-		foreach (GameObject block in blocksList) {
-			print (block);
-		}
+		// Store inital blocks loaded in list. 
+		OnLevelLoad ();
+
 		// (3) Lives Management
 		// Same logic as score; set to 3 for starting a new game. 
 		lives = PlayerPrefs.GetInt ("lives", 3);
@@ -110,7 +93,40 @@ public class GameController : MonoBehaviour
 	}
 
 	// Internal methods
-	// (1) Update Score Display
+	// (1) On Level Load
+	void OnLevelLoad ()
+	{
+		// Add all game objects that are active blocks to blocksList
+		foreach (GameObject blockOne in GameObject.FindGameObjectsWithTag("Block1")) {
+			blocksList.Add (blockOne);
+		}
+		foreach (GameObject blockThree in GameObject.FindGameObjectsWithTag("Block3")) {
+			blocksList.Add (blockThree);
+		}
+		foreach (GameObject blockFive in GameObject.FindGameObjectsWithTag("Block5")) {
+			blocksList.Add (blockFive);
+		}
+		foreach (GameObject powerUp1 in GameObject.FindGameObjectsWithTag("PowerUp1")) {
+			blocksList.Add (powerUp1);
+		}
+		foreach (GameObject powerUp2 in GameObject.FindGameObjectsWithTag("PowerUp2")) {
+			blocksList.Add (powerUp2);
+		}
+		foreach (GameObject powerUp3 in GameObject.FindGameObjectsWithTag("PowerUp3")) {
+			blocksList.Add (powerUp3);
+		}
+		foreach (GameObject powerUp4 in GameObject.FindGameObjectsWithTag("PowerUp4")) {
+			blocksList.Add (powerUp4);
+		}
+		foreach (GameObject powerUp5 in GameObject.FindGameObjectsWithTag("PowerUp5")) {
+			blocksList.Add (powerUp5);
+		}
+		foreach (GameObject block in blocksList) {
+			print (block);
+		}
+	}
+		
+	// Update Score Display
 	void UpdateScore ()
 	{
 		scoreText.text = "Score:" + score; 
