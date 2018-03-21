@@ -43,17 +43,23 @@ public class GameController : MonoBehaviour
 		+ GameObject.FindGameObjectsWithTag ("PowerUp2").Length + GameObject.FindGameObjectsWithTag ("PowerUp3").Length
 		+ GameObject.FindGameObjectsWithTag ("PowerUp4").Length + GameObject.FindGameObjectsWithTag ("PowerUp5").Length
 		+ GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
+		BlockManagement ();
 
 		// (3) Lives Management
 		// Same logic as score; set to 3 for starting a new game. 
 		lives = PlayerPrefs.GetInt ("lives", 3);
 		livesText.text = "Lives:" + lives.ToString (); 
+	}
 
-//		 Option 2 - Find each block by name - seems super tedious! 
-		List<GameObject> blocksList = new List<GameObject>();
-		// want a list of all game objects that are blocks
+	// External Methods
+	// (1) Block Management Method
+	public void BlockManagement ()
+	{
+		List<GameObject> blocksList = new List<GameObject> ();  
+	
+		// Add all game objects that are active blocks to blocksList
 		foreach (GameObject blockOne in GameObject.FindGameObjectsWithTag("Block1")) {
-		blocksList.Add (blockOne);
+			blocksList.Add (blockOne);
 		}
 		foreach (GameObject blockThree in GameObject.FindGameObjectsWithTag("Block3")) {
 			blocksList.Add (blockThree);
@@ -76,82 +82,49 @@ public class GameController : MonoBehaviour
 		foreach (GameObject powerUp5 in GameObject.FindGameObjectsWithTag("PowerUp5")) {
 			blocksList.Add (powerUp5);
 		}
+			
+//		// remove blocks that have been collected
+//		if (blocksList.Contains (collectedBlock.gameObject)) {
+//			blocksList.Remove(collectedBlock.gameObject);
+//		}
 
 		foreach (GameObject block in blocksList) {
 			print (block);
 		}
-
-		// BLOCK DATABASE REFERENCE AND MANAGEMENT 
-		// Options 1 - Define a function to do this: https://answers.unity.com/questions/179310/how-to-find-all-objects-in-specific-layer.html
-		// where the layer is 1 - Middle Ground as there are only blocks on this layer. 
-		//		function FindGameObjectsWithLayer (layer : int) : GameObject[] {
-		//			var goArray = FindObjectsOfType(GameObject);
-		//			var goList = new System.Collections.Generic.List.<GameObject>();
-		//			for (var i = 0; i < goArray.Length; i++) {
-		//				if (goArray[i].layer == layer) {
-		//					goList.Add(goArray[i]);
-		//				}
-		//			}
-		//			if (goList.Count == 0) {
-		//				return null;
-		//			}
-		//			return goList.ToArray();
-		//		}
-		// Option 2 - Find each block by name - seems super tedious! 
-		//		List<GameObject> blocksList = new List<GameObject>();
-		//		// want a list of all game objects that are blocks
-		//		GameObject blockOne =  GameObject.Find("Block1 (2)");
-		//		blocksList.Add(blockOne);
-		//		print (blocksList [0]);
-		//		// is it possible to find by prefab and organise each instance of a prefab as a separate object? ... maybe
 	}
 
-//	// Test Methods
-//	public void FindGameObjectsWithLayer (int layer, GameObject block){
-//		var goArray = FindObjectOfType (GameObject);
-//		var goList = new System.Collections.Generic.List<GameObject>();
-//		for (var i = 0; i < goArray.Length; i++){
-//			if (goArray [i].layer == layer) {
-//				goList.Add (goArray [i]);
-//			}
-//			if (goList.Count == 0) {
-//				return null;
-//			}
-//			return goList.ToArray ();	
-//		}
-//	}
-
-	// Methods
-	// (1) Increase Score Method to Call in Other Scripts
+	// (2) Increase Score Method
 	public void AddScore (int newScoreValue)
 	{
 		score += newScoreValue;
 		levelScore += newScoreValue;
 		UpdateScore ();
 		LevelChange ();
+
 	}
 
-	// (2) Lives Method to Call in Other Scripts
+	// (3) Lives Lost Method
 	public void LivesLost (int newLivesValue)
 	{
 		lives -= newLivesValue;
+		Debug.Log ("Life lost");
 		SetLives ();
 	}
 
-
-	// Update Score Display Function
+	// Internal methods
+	// (1) Update Score Display
 	void UpdateScore ()
 	{
 		scoreText.text = "Score:" + score; 
 	}
 
-	// Update Level Info Display Function
+	// (2) Update Level Info Display
 	void UpdateLevelText ()
 	{
 		levelText.text = "Level:" + level;
 	}
 
-	// Level Change Function:
+	// (3) Level Change Method
 	// Check if all blocks have been hit, load next level
 	void LevelChange ()
 	{
@@ -169,11 +142,8 @@ public class GameController : MonoBehaviour
 			UpdateLevelText ();
 		}
 	}
-
-	//	SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
-	//	Debug.Log ("Load Level 1");
-
-	// Lives Function:
+		
+	// Set Lives Method
 	public void SetLives ()
 	{
 		if (lives > 0) {

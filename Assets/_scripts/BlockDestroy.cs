@@ -87,6 +87,7 @@ public class BlockDestroy : MonoBehaviour
 		if (gameObject.tag == "Block1") {
 			// One hit destroy object, deactivate block on collision with ball 
 			gameObject.SetActive (false);
+			gameController.BlockManagement ();
 			gameController.AddScore(scoreValue);
 		}
 

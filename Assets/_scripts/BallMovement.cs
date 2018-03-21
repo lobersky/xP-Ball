@@ -26,7 +26,7 @@ public class BallMovement : MonoBehaviour
 		}
 
 		// Set initial velocity of the ball
-		GetComponent<Rigidbody2D> ().velocity = Vector2.up * speedBall;
+		GetComponent<Rigidbody2D> ().velocity = Vector2.down * speedBall;
 	}
 
 	void Update() {
