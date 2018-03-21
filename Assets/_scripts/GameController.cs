@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
 	private int loadLevel;
 	private int level;
 	private int levelScore;
+	public 	List<GameObject> blocksList = new List<GameObject> ();  
 
 	// Public variables - lives system
 	public Text livesText;
@@ -43,20 +44,6 @@ public class GameController : MonoBehaviour
 		+ GameObject.FindGameObjectsWithTag ("PowerUp2").Length + GameObject.FindGameObjectsWithTag ("PowerUp3").Length
 		+ GameObject.FindGameObjectsWithTag ("PowerUp4").Length + GameObject.FindGameObjectsWithTag ("PowerUp5").Length
 		+ GameObject.FindGameObjectsWithTag ("Block3").Length + GameObject.FindGameObjectsWithTag ("Block5").Length;
-		BlockManagement ();
-
-		// (3) Lives Management
-		// Same logic as score; set to 3 for starting a new game. 
-		lives = PlayerPrefs.GetInt ("lives", 3);
-		livesText.text = "Lives:" + lives.ToString (); 
-	}
-
-	// External Methods
-	// (1) Block Management Method
-	public void BlockManagement ()
-	{
-		List<GameObject> blocksList = new List<GameObject> ();  
-	
 		// Add all game objects that are active blocks to blocksList
 		foreach (GameObject blockOne in GameObject.FindGameObjectsWithTag("Block1")) {
 			blocksList.Add (blockOne);
@@ -82,17 +69,28 @@ public class GameController : MonoBehaviour
 		foreach (GameObject powerUp5 in GameObject.FindGameObjectsWithTag("PowerUp5")) {
 			blocksList.Add (powerUp5);
 		}
-			
-//		// remove blocks that have been collected
-//		if (blocksList.Contains (collectedBlock.gameObject)) {
-//			blocksList.Remove(collectedBlock.gameObject);
-//		}
+		foreach (GameObject block in blocksList) {
+			print (block);
+		}
+		// (3) Lives Management
+		// Same logic as score; set to 3 for starting a new game. 
+		lives = PlayerPrefs.GetInt ("lives", 3);
+		livesText.text = "Lives:" + lives.ToString (); 
+	}
 
+	// External Methods
+	// (1) Block Management Method
+	public void BlockManagement (GameObject collectedBlock)
+	{
+		// remove blocks that have been collected
+		if (blocksList.Contains (collectedBlock)) {
+			blocksList.Remove(collectedBlock);
+		}
 		foreach (GameObject block in blocksList) {
 			print (block);
 		}
 	}
-
+		
 	// (2) Increase Score Method
 	public void AddScore (int newScoreValue)
 	{
